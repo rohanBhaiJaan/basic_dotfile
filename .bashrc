@@ -2,7 +2,7 @@ alias gs="git status -s"
 set -o vi
 
 getBranch(){
-  branch="$(git branch 2> /dev/null | grep \* | sed 's/\* //')"
+  local branch="$(git branch 2> /dev/null | grep \* | sed 's/\* //')"
   echo $branch
 }
 
