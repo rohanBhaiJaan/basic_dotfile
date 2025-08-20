@@ -1,4 +1,8 @@
 alias gs="git status -s"
+alias diff="git diff"
+alias habits="cd ~/projects/habit_tracker/"
+alias bvim="vim --clean -u ~/my_vim/.vimrc"
+
 set -o vi
 
 getBranch(){
