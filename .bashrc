@@ -7,10 +7,20 @@ alias tmp="tmux new -s tmpdir -c $TMPDIR"
 alias t="tmux"
 alias ktmux="tmux kill-server"
 alias FZF="openWithTmux"
+alias vim="openIfTmuxRun"
+alias ls="command lsd"
 set -o vi
 
 my_UBUNTU_RUNNING=0
 true_var=1
+
+openIfTmuxRun() {
+   if [ -n "$TMUX" ]; then
+     command vim "$@"; gs
+  else
+    echo -e "\t\e[37mSTART TMUX SESSION FIRST\e[0m"
+  fi
+}
 
 startUbuntu() {
   if [ -f $TMPDIR/ubuntu_running ]; then
@@ -46,3 +56,4 @@ getBranch(){
 }
 
 export PS1="\[\033[1;34m\]lazy@coder \[\033[0;32m\]\w \[\033[0m\]\$(getBranch)\n\$ "
+export PATH="/data/data/com.termux/files/home/.cargo/bin/:$PATH"
